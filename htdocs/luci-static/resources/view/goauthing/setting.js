@@ -104,10 +104,11 @@ async function generateDownloadUrl() {
 
 	if (!version) {
 		alert(_('Failed to get latest version from GitHub'));
-		return null;
+		return `https://mirrors.tuna.tsinghua.edu.cn/github-release/z4yx/GoAuthing/LatestRelease/auth-thu.linux.${arch}`;
 	}
 
-	return `https://github.com/z4yx/GoAuthing/releases/download/${version}/auth-thu.linux.${arch}`;
+	return `https://mirrors.tuna.tsinghua.edu.cn/github-release/z4yx/GoAuthing/LatestRelease/auth-thu.linux.${arch}
+https://github.com/z4yx/GoAuthing/releases/download/${version}/auth-thu.linux.${arch}`;
 }
 
 async function downloadCore() {
@@ -205,9 +206,9 @@ return view.extend({
 
 		o = s.option(form.Button, 'download_core', _('Download Core'), _('Download the latest GoAuthing core from configured URLs.'));
 		o.inputtitle = _('Download');
-		o.onclick = function() {
+		o.onclick = async function() {
 			if (confirm(_('Are you sure you want to download the core? This will replace the current version.'))) {
-				downloadCore();
+				await downloadCore();
 			}
 		};
 
@@ -216,7 +217,7 @@ return view.extend({
 		o.onclick = async function() {
 			const url = await generateDownloadUrl();
 			if (url) {
-				const textarea = document.querySelector('textarea[data-name="download_urls"]');
+				const textarea = document.getElementById('widget.cbid.goauthing.config.download_urls');
 				if (textarea) {
 					textarea.value = url;
 					textarea.dispatchEvent(new Event('input', { bubbles: true }));
@@ -226,10 +227,9 @@ return view.extend({
 
 		o = s.option(form.TextValue, 'download_urls', _('Core Download URLs'),
 			_('Enter download URLs, one per line. The system will try each URL in order until download succeeds.<br>' +
-				'Template variables supported: <code>${version}</code> (latest from GitHub), <code>${arch}</code> (auto-detected)<br>' +
-				'Example: <code>https://github.com/z4yx/GoAuthing/releases/download/${version}/auth-thu.linux.${arch}</code>'));
+				'Template variables supported: <code>${version}</code> (latest from GitHub), <code>${arch}</code> (auto-detected)<br>'));
 		o.rows = 5;
-		o.default = 'https://github.com/z4yx/GoAuthing/releases/download/${version}/auth-thu.linux.${arch}';
+		o.default = 'https://mirrors.tuna.tsinghua.edu.cn/github-release/z4yx/GoAuthing/LatestRelease/auth-thu.linux.${arch}';
 		o.rmempty = true; return m.render();
 	}
 });
