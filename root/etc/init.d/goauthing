@@ -34,9 +34,24 @@ start_instance() {
 
 start_service() {
   config_load "$SERV"
+  config_get_bool enabled goauthing enabled 0
+  if [ "$enabled" == "0" ]; then
+    return
+  fi
   start_instance
 }
 
 stop_service() {
   "$PROG" deauth
+}
+
+# Custom reload function to restart the service
+service_triggers() {
+  procd_add_reload_trigger "goauthing"
+  procd_add_interface_trigger "interface.*.up" wan /etc/init.d/goauthing reload
+}
+
+reload_service() {
+  stop
+  start
 }

@@ -1,3 +1,4 @@
 config goauthing 'config'
+	option enabled '0'
 	option username ''
 	option password ''
