@@ -2,17 +2,23 @@
 	"luci-app-auth-thu": {
 		"description": "Grant access to Auth THU configuration",
 		"read": {
-			"file": {
-				"/usr/bin/goauthing --version": [ "exec" ],
-				"/etc/init.d/goauthing enable": [ "exec" ],
-				"/etc/init.d/goauthing start": [ "exec" ]
-			},
 			"ubus": {
-				"service": [ "list" ]
+				"service": ["list"],
+				"uci": ["get", "load"]
 			},
-			"uci": [ "goauthing" ]
+			"file": {
+				"/usr/bin/goauthing": ["exec"],
+				"/usr/bin/wget": ["exec"],
+				"/bin/uname": ["exec"],
+				"/bin/mv": ["exec"],
+				"/bin/chmod": ["exec"],
+				"/etc/init.d/goauthing": ["exec"]
+			}
 		},
 		"write": {
+			"ubus": {
+				"uci": ["set", "save", "commit"]
+			},
 			"uci": [ "goauthing" ]
 		}
 	}
