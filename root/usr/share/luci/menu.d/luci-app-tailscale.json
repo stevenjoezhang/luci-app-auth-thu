@@ -1,0 +1,21 @@
+{
+	"admin/services/goauthing": {
+		"title": "Auth THU",
+		"order": 90,
+		"action": {
+			"type": "firstchild"
+		},
+		"depends": {
+			"acl": [ "luci-app-auth-thu" ],
+			"uci": { "goauthing": true }
+		}
+	},
+	"admin/services/goauthing/setting": {
+		"title": "Global Settings",
+		"order": 10,
+		"action": {
+			"type": "view",
+			"path": "goauthing/setting"
+		}
+	}
+}
