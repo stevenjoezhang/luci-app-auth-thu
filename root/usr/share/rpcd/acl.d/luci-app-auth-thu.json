@@ -8,6 +8,7 @@
 			},
 			"file": {
 				"/usr/bin/goauthing": ["exec"],
+				"/sbin/logread": ["exec"],
 				"/usr/bin/wget": ["exec"],
 				"/bin/uname": ["exec"],
 				"/bin/mv": ["exec"],

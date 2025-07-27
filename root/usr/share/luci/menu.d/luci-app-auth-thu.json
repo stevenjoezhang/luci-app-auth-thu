@@ -17,5 +17,13 @@
 			"type": "view",
 			"path": "goauthing/setting"
 		}
+	},
+	"admin/services/goauthing/log": {
+		"title": "Logs",
+		"order": 30,
+		"action": {
+			"type": "view",
+			"path": "goauthing/log"
+		}
 	}
 }
