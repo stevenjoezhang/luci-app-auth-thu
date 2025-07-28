@@ -35,7 +35,7 @@ start_instance() {
 
 start_service() {
   config_load "$SERV"
-  config_get_bool enabled goauthing enabled 0
+  config_get_bool enabled config enabled 0
   if [ "$enabled" == "0" ]; then
     return
   fi

@@ -12,7 +12,7 @@ return view.extend({
 		]);
 		const logger = stat[0] ? stat[0].path : stat[1] ? stat[1].path : null;
 
-		const logdata = await fs.exec_direct(logger, ['-e', 'goauthing']);
+		const logdata = await fs.exec_direct(logger, ['-e', 'auth-thu']);
 		const statusMappings = {
 			'daemon.err': { status: 'StdErr', startIndex: 9 },
 			'daemon.notice': { status: 'Info', startIndex: 10 }
