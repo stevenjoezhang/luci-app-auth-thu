@@ -49,7 +49,6 @@ stop_service() {
 # Custom reload function to restart the service
 service_triggers() {
   procd_add_reload_trigger "goauthing"
-  procd_add_interface_trigger "interface.*.up" wan /etc/init.d/goauthing reload
 }
 
 reload_service() {

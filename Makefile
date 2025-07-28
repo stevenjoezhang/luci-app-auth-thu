@@ -15,6 +15,14 @@ define Package/$(PKG_NAME)/conffiles
 /etc/config/goauthing
 endef
 
+define Package/$(PKG_NAME)/postinst
+#!/bin/sh
+	/etc/init.d/goauthing enable >/dev/null 2>&1
+	rm -f /tmp/luci-indexcache
+	rm -f /tmp/luci-modulecache/*
+exit 0
+endef
+
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
