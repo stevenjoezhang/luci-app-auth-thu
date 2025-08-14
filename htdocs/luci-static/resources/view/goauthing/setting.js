@@ -49,9 +49,9 @@ function renderStatus(isRunning) {
 	const spanTemp = '<em><span style="color:%s"><strong>%s %s</strong></span></em>';
 	let renderHTML;
 	if (isRunning) {
-		renderHTML = String.format(spanTemp, 'green', _('GoAuthing'), _('RUNNING'));
+		renderHTML = String.format(spanTemp, 'green', _('Auth THU'), _('RUNNING'));
 	} else {
-		renderHTML = String.format(spanTemp, 'red', _('GoAuthing'), _('NOT RUNNING'));
+		renderHTML = String.format(spanTemp, 'red', _('Auth THU'), _('NOT RUNNING'));
 	}
 
 	return renderHTML;
@@ -166,7 +166,7 @@ return view.extend({
 		let m, s, o;
 		const statusData = data[1];
 
-		m = new form.Map('goauthing', _('GoAuthing'), _('GoAuthing is a network authentication client for campus networks.'));
+		m = new form.Map('goauthing', _('Auth THU'), _('Auth THU is a network authentication client for campus networks.'));
 
 		s = m.section(form.TypedSection);
 		s.anonymous = true;
