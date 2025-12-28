@@ -10,8 +10,8 @@ SERV=goauthing  # UCI config at /etc/config/goauthing
 
 generate_command() {
 CMD="\
-\"$PROG\" $1 deauth; \
-\"$PROG\" $1 auth; \
+\"$PROG\" $1 deauth --insecure; \
+\"$PROG\" $1 auth --insecure; \
 \"$PROG\" $1 online; \
 "
 }
@@ -43,7 +43,7 @@ start_service() {
 }
 
 stop_service() {
-  "$PROG" deauth
+  "$PROG" deauth --insecure
 }
 
 # Custom reload function to restart the service
