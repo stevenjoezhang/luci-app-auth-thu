@@ -78,17 +78,15 @@ async function detectArch() {
 			// Map uname output to GoAuthing arch names
 			const archMap = {
 				'armv7l': 'arm',
-				'armv6l': 'armv6',
-				'armv5tel': 'armv5',
 				'aarch64': 'arm64',
+				'armv5tel': 'armv5',
+				'armv6l': 'armv6',
 				'loongarch64': 'loong64',
 				'mips': 'mipsbe',
 				'mipsel': 'mipsle',
 				'ppc64le': 'ppc64le',
 				'riscv64': 'riscv64',
-				'x86_64': 'x86_64',
-				'i386': 'x86_64', // fallback
-				'i686': 'x86_64'  // fallback
+				'x86_64': 'x86_64'
 			};
 			return archMap[uname] || 'x86_64'; // default fallback
 		}
